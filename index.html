@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>e-LKPD Fisika: Pengasapan Mangut Lele</title>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@600;700&family=Source+Sans+3:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#eef2f2;--card:#fff;--ink:#1c2b30;--mut:#5a6b71;--line:#d3dcde;--pri:#0f6b64;--pri-t:#dff1ee;--ember:#d9480f;--ember-t:#fde8dc;--ok:#2f7d32;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){color-scheme:dark;--bg:#12191c;--card:#1b2529;--ink:#e6eeee;--mut:#9fb0b4;--line:#2c3a3f;--pri:#4fc3b8;--pri-t:#173a37;--ember:#ff8a50;--ember-t:#3a2418;--ok:#7bd37f}}
+:root[data-theme="dark"]{color-scheme:dark;--bg:#12191c;--card:#1b2529;--ink:#e6eeee;--mut:#9fb0b4;--line:#2c3a3f;--pri:#4fc3b8;--pri-t:#173a37;--ember:#ff8a50;--ember-t:#3a2418;--ok:#7bd37f}
+*,*::before,*::after{box-sizing:inherit}
+html{scroll-padding-top:90px}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 "Source Sans 3",system-ui,sans-serif}
+h1,h2,h3{font-family:"Bricolage Grotesque",system-ui,sans-serif;line-height:1.2;margin:0 0 .5rem}
+h1{font-size:1.5rem}h2{font-size:1.4rem}h3{font-size:1.05rem}
+header{position:sticky;top:0;z-index:5;background:var(--card);border-bottom:1px solid var(--line);padding:.7rem 1rem}
+.top{max-width:1180px;margin:auto}
+nav{display:flex;gap:.4rem;overflow-x:auto;margin-top:.5rem;padding-bottom:.2rem}
+nav button{flex:0 0 auto;border:1px solid var(--line);background:none;color:var(--ink);padding:.4rem .8rem;border-radius:999px;font:inherit;font-size:.9rem;cursor:pointer}
+nav button.on{background:var(--pri);color:#fff;border-color:var(--pri)}
+.bar{height:6px;background:var(--line);border-radius:3px;margin-top:.5rem;overflow:hidden}
+.bar i{display:block;height:100%;width:20%;background:var(--ember);transition:width .3s}
+main{max-width:1180px;margin:auto;padding:1rem}
+section{display:none}section.on{display:block}
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:1rem;margin-bottom:1rem}
+.grid2{display:grid;gap:1rem;grid-template-columns:1fr 1fr}
+.grid3{display:grid;gap:1rem;grid-template-columns:repeat(3,1fr)}
+@media(max-width:860px){.grid2,.grid3{grid-template-columns:1fr}}
+.video{aspect-ratio:16/9;background:linear-gradient(135deg,#27363b,#0f1c20);border-radius:10px;display:grid;place-items:center;color:#cfe0e2;text-align:center;padding:1rem}
+.video b{display:block;font-size:1.1rem;color:#fff}
+.tag{display:inline-block;background:var(--ember-t);color:var(--ember);border-radius:6px;padding:.1rem .5rem;font-size:.85rem;font-weight:600}
+.case{border-left:4px solid var(--ember);padding-left:.8rem}
+.case.m{border-color:var(--pri)}
+table{width:100%;border-collapse:collapse;font-size:.95rem}
+th,td{text-align:left;padding:.45rem .5rem;border-bottom:1px solid var(--line)}
+th{color:var(--mut);font-weight:600}
+input,textarea,select{width:100%;font:inherit;color:var(--ink);background:var(--bg);border:1px solid var(--line);border-radius:8px;padding:.5rem}
+textarea{min-height:90px;resize:vertical}
+label{font-weight:600;font-size:.92rem;display:block;margin:.5rem 0 .2rem}
+button.b{background:var(--pri);color:#fff;border:0;border-radius:8px;padding:.55rem 1rem;font:inherit;font-weight:600;cursor:pointer}
+button.b.alt{background:none;color:var(--pri);border:1px solid var(--pri)}
+button:focus-visible,input:focus-visible,textarea:focus-visible,summary:focus-visible{outline:3px solid var(--ember);outline-offset:2px}
+button:disabled,.locked{opacity:.45;pointer-events:none}
+.stages{display:flex;gap:.4rem;flex-wrap:wrap;margin-bottom:1rem}
+.stages button{border:1px solid var(--line);background:var(--card);color:var(--ink);border-radius:8px;padding:.45rem .7rem;font:inherit;font-size:.9rem;cursor:pointer;text-align:left}
+.stages button.on{border-color:var(--pri);background:var(--pri-t);font-weight:600}
+.stages button.done::after{content:" ✓";color:var(--ok)}
+.chat{height:260px;overflow-y:auto;background:var(--bg);border:1px solid var(--line);border-radius:8px;padding:.6rem;display:flex;flex-direction:column;gap:.5rem;margin-bottom:.5rem}
+.msg{max-width:90%;padding:.45rem .7rem;border-radius:10px;font-size:.95rem}
+.msg.ai{background:var(--pri-t);align-self:flex-start}
+.msg.me{background:var(--ember-t);align-self:flex-end}
+.row{display:flex;gap:.5rem}
+pre{white-space:pre-wrap;background:var(--bg);border:1px dashed var(--line);border-radius:8px;padding:.6rem;font:.85rem/1.5 ui-monospace,monospace;margin:.4rem 0}
+details{border:1px solid var(--line);border-radius:8px;padding:.5rem .8rem;margin-bottom:.5rem;background:var(--card)}
+summary{cursor:pointer;font-weight:600}
+.chk label{display:flex;gap:.5rem;align-items:flex-start;font-weight:400;margin:.35rem 0}
+.chk input{width:auto;margin-top:.35rem}
+.note{color:var(--mut);font-size:.88rem}
+.ok{color:var(--ok);font-weight:600}
+.kpi{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:.6rem}
+.kpi div{background:var(--bg);border-radius:8px;padding:.5rem .7rem}
+.kpi b{display:block;font-size:1.15rem;font-family:"Bricolage Grotesque",sans-serif}
+.tscroll{overflow-x:auto}
+canvas{max-width:100%}
+.nextrow{display:flex;justify-content:space-between;margin-top:.5rem}
+</style>
+</head>
+<body>
+<header><div class="top">
+<h1>e-LKPD Fisika: Misteri Pengasapan Mangut Lele</h1>
+<div class="note">PBL Ethno-STEM · Fase F · Kalor dan perpindahan kalor</div>
+<nav id="nav"></nav>
+<div class="bar"><i id="pb"></i></div>
+</div></header>
+
+<main>
+<!-- SINTAKS 1 -->
+<section id="s1" class="on">
+<h2>Sintaks 1: Orientasi Masalah</h2>
+<div class="grid2">
+<div class="video"><div><b>Video: Misteri Pengasapan Mangut Lele</b>Pak Budi vs Simbok Marto<br><span class="note" style="color:#9fb6ba">Ganti blok ini dengan tautan video kelas Anda (iframe embed).</span></div></div>
+<div class="card"><span class="tag">Etnosains</span>
+<h3>Simbok Marto dan lele asap Yogyakarta</h3>
+<p>Simbok Marto mulai mengasap lele pada 1969 dan mengolahnya menjadi mangut lele sejak 1975. Lele yang diasap lebih tahan lama dan teksturnya padat, berbeda dari lele yang digoreng atau dibakar langsung.</p>
+<p class="note">Pertanyaan pemantik: mengapa lele asap Simbok Marto tidak gosong, padahal berada dekat bara?</p></div>
+</div>
+<div class="grid2">
+<div class="card case"><h3>Pak Budi: api besar, 15 menit</h3><p>Lele diasap dengan nyala api, lalu dipercik air ketika api membesar. Permukaan cepat kering dan menghitam, tetapi bagian dalam belum matang merata.</p></div>
+<div class="card case m"><h3>Simbok Marto: bara membara, 1,5 jam</h3><p>Lele ditusuk bambu runcing dan disusun di atas bara yang membara. Api dijaga kecil, sesekali dipercik air. Hasilnya matang sampai ke dalam dan tahan lama.</p></div>
+</div>
+<div class="card"><h3>Rumusan masalah</h3><p>Bagaimana kalor berpindah dan berapa kalor yang dibutuhkan agar lele 125 g menjadi mangut lele berkadar air 15%? Dan mengapa cara Simbok Marto lebih baik dari cara Pak Budi?</p></div>
+<div class="nextrow"><span></span><button class="b" data-go="2">Lanjut ke Sintaks 2</button></div>
+</section>
+
+<!-- SINTAKS 2 -->
+<section id="s2">
+<h2>Sintaks 2: Mengorganisasi Siswa untuk Belajar</h2>
+<div class="card"><h3>Peran: Tim Konsultan Pengolahan Pangan</h3>
+<p>Kelompok Anda diminta UMKM lele asap untuk menghitung kebutuhan kalor, menjelaskan cara kerja pengasapan Simbok Marto, dan menyusun SOP yang aman. Bagi tugas: pencatat data, penggambar grafik dan diagram gaya, penghitung kalor, dan juru bicara.</p>
+<label for="tim">Nama tim dan anggota</label><input id="tim" placeholder="Contoh: Tim Bara, Ani, Budi, Citra, Dewi"></div>
+<div class="card"><h3>Dashboard data empiris</h3>
+<div class="tscroll"><table>
+<tr><th>Besaran</th><th>Nilai</th></tr>
+<tr><td>Massa awal lele (kadar air 78%)</td><td>125 g</td></tr>
+<tr><td>Massa akhir (kadar air 15%)</td><td>32,35 g (air menguap 92,65 g)</td></tr>
+<tr><td>Suhu awal → suhu dalam matang</td><td>27,7 °C → 96,1 °C (ΔT = 68,4 °C)</td></tr>
+<tr><td>T lingkungan membara (T<sub>smoldering</sub>)</td><td>108,94 °C</td></tr>
+<tr><td>Kalor jenis daging (c)</td><td>3,5 kJ/kg°C</td></tr>
+<tr><td>Kalor laten penguapan (L<sub>v</sub>)</td><td>2400 kJ/kg</td></tr>
+<tr><td>Emisivitas bara (ε), jarak, faktor pandang F</td><td>0,95 · 3 cm · 0,9066</td></tr>
+<tr><td>Dehidrasi</td><td>78% → 15% air</td></tr>
+</table></div></div>
+<div class="nextrow"><button class="b alt" data-go="1">Kembali</button><button class="b" data-go="3">Lanjut ke Sintaks 3</button></div>
+</section>
+
+<!-- SINTAKS 3 -->
+<section id="s3">
+<h2>Sintaks 3: Penyelidikan Mandiri dan Kelompok</h2>
+<div class="stages" id="stages"></div>
+<div class="grid3">
+<div class="card"><h3>1. Prediksi mandiri</h3><p class="note" id="q-text"></p>
+<label for="pred">Prediksi dan alasan Anda</label><textarea id="pred" placeholder="Tulis dugaan Anda dengan kata-kata sendiri…"></textarea>
+<label for="predeq">Rumus atau sketsa verbal yang Anda pakai</label><input id="predeq" placeholder="Contoh: P = F/A">
+<div style="margin-top:.6rem"><button class="b" id="submitPred">Kirim prediksi</button> <span id="predok" class="ok"></span></div></div>
+
+<div class="card locked" id="col2"><h3>2. Tutor Socratic</h3>
+<div class="chat" id="chat"></div>
+<div class="row"><input id="chatin" placeholder="Tulis jawaban atau pertanyaan Anda"><button class="b" id="send">Kirim</button></div>
+<details><summary>Prompt panduan (salin ke AI pilihan Anda)</summary>
+<pre id="tpl"></pre><button class="b alt" id="copy">Salin prompt</button> <span class="ok" id="copied"></span></details>
+<p class="note">Tutor ini memandu lewat pertanyaan dan tidak memberi jawaban akhir.</p></div>
+
+<div class="card locked" id="col3"><h3>3. Refleksi dan evaluasi kritis</h3>
+<p class="note">Verifikasi jawaban AI sebelum dipakai. Anda yang bertanggung jawab atas hasil akhirnya.</p>
+<div class="chk" id="chk"></div>
+<label for="refl">Bagian jawaban AI yang Anda ubah atau tolak, dan alasannya</label><textarea id="refl"></textarea>
+<button class="b" id="markDone" style="margin-top:.5rem">Tandai tahap selesai</button></div>
+</div>
+<div class="nextrow"><button class="b alt" data-go="2">Kembali</button><button class="b" data-go="4">Lanjut ke Sintaks 4</button></div>
+</section>
+
+<!-- SINTAKS 4 -->
+<section id="s4">
+<h2>Sintaks 4: Mengembangkan dan Menyajikan Hasil Karya</h2>
+<div class="grid2">
+<div class="card"><h3>Input data suhu</h3>
+<p class="note">Isi waktu (menit) dan suhu (°C) dari eksperimen atau data kelas. Grafik diperbarui otomatis.</p>
+<div class="tscroll"><table id="dt"><thead><tr><th>t (menit)</th><th>Simbok Marto (dalam)</th><th>Pak Budi (permukaan)</th><th>Pak Budi (dalam)</th><th></th></tr></thead><tbody></tbody></table></div>
+<div class="row" style="margin-top:.5rem"><button class="b alt" id="addRow">Tambah baris</button><button class="b alt" id="sample">Isi data contoh</button></div></div>
+<div class="card"><h3>Grafik T terhadap t</h3><div style="height:320px"><canvas id="chart"></canvas></div>
+<p class="note">Zona jingga: denaturasi protein 55–96,1 °C. Garis putus-putus: lingkungan membara 108,94 °C.</p></div>
+</div>
+<div class="grid2">
+<div class="card"><h3>Diagram benda bebas (FBD) tusuk bambu</h3>
+<div class="row"><div><label for="Fin">Gaya tusuk F (N)</label><input id="Fin" type="number" value="20"></div><div><label for="Din">Diameter ujung (mm)</label><input id="Din" type="number" value="1" step="0.1"></div><div><label for="Min">Massa lele (g)</label><input id="Min" type="number" value="125"></div></div>
+<canvas id="fbd" width="520" height="260"></canvas>
+<p id="pcalc" class="note"></p></div>
+<div class="card"><h3>Ringkasan SOP evaluasi</h3>
+<div class="kpi"><div>Q₁ (sensibel)<b>29,925 kJ</b></div><div>Q₂ (laten)<b>222,36 kJ</b></div><div>Q total<b>252,285 kJ</b></div><div>Per kg<b>2018,28 kJ/kg</b></div><div>Konveksi asap<b>95,38%</b></div><div>Radiasi bara<b>4,62%</b></div></div>
+<p class="note">Q₁ = m·c·ΔT = 0,125 × 3,5 × 68,4. Q₂ = m<sub>air</sub>·L<sub>v</sub> = 0,09265 × 2400.</p>
+<pre id="sop"></pre><button class="b alt" id="copySop">Salin SOP</button></div>
+</div>
+<div class="nextrow"><button class="b alt" data-go="3">Kembali</button><button class="b" data-go="5">Lanjut ke Sintaks 5</button></div>
+</section>
+
+<!-- SINTAKS 5 -->
+<section id="s5">
+<h2>Sintaks 5: Menganalisis dan Mengevaluasi</h2>
+<div class="grid2">
+<div class="card"><h3>Kuis refleksi</h3><div id="quiz"></div><button class="b" id="grade">Periksa jawaban</button> <span id="score" class="ok"></span></div>
+<div class="card"><h3>Kirim karya untuk tinjauan teman</h3>
+<label for="ig">Tautan video atau infografis Instagram</label><input id="ig" placeholder="https://www.instagram.com/…">
+<label for="cap">Satu hal yang ingin Anda dengar dari penelaah</label><input id="cap">
+<div style="margin-top:.6rem"><button class="b" id="subIg">Kirim untuk ditinjau</button> <span id="igok"></span></div>
+<ul id="subs" class="note"></ul>
+<h3 style="margin-top:1rem">Panduan tinjauan teman</h3>
+<details><summary>Grafik dan diagram</summary>Apakah sumbu, satuan, zona denaturasi, dan arah gaya terbaca jelas?</details>
+<details><summary>Penjelasan fisika</summary>Apakah perhitungan kalor dan pembagian konveksi-radiasi dijelaskan, bukan hanya ditulis?</details></div>
+</div>
+<div class="nextrow"><button class="b alt" data-go="4">Kembali</button><span class="note">Selesai. Terima kasih, Tim Konsultan.</span></div>
+</section>
+</main>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<script>
+const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
+let cur=1;
+const names=["1 Orientasi","2 Organisasi","3 Penyelidikan","4 Hasil Karya","5 Evaluasi"];
+$("#nav").innerHTML=names.map((n,i)=>`<button data-go="${i+1}">${n}</button>`).join("");
+function go(n){cur=n;$$("section").forEach((s,i)=>s.classList.toggle("on",i+1===n));$$("#nav button").forEach((b,i)=>b.classList.toggle("on",i+1===n));$("#pb").style.width=n*20+"%";window.scrollTo(0,0);if(n===4)draw()}
+document.addEventListener("click",e=>{const g=e.target.closest("[data-go]");if(g)go(+g.dataset.go)});
+
+/* ---- Sintaks 3 ---- */
+const ST=[
+{t:"Mekanika penusukan",q:"Mengapa ujung bambu harus runcing dan mengapa lele tidak boleh miring di tusukan? Prediksikan hubungan P, F, A dan peran gesekan kinetis.",
+ hint:["Apa yang berubah pada P jika A ujung bambu dikecilkan, sementara F tetap?","Saat bambu bergerak masuk, arah gaya gesek kinetis f_k terhadap gerak itu bagaimana? Apa yang menentukan besarnya?","Jika titik tusuk tidak sejajar dengan pusat massa lele, apa yang terjadi pada momen gaya? Kaitkan dengan syarat τ = 0.","Ringkas: tuliskan P = F/A dengan angka dari FBD Anda, dan jelaskan kenapa lele tidak berputar."],
+ kw:["tekanan","luas","gesek","pusat massa","torsi","momen"],ck:["Satuan P (Pa atau MPa) sudah saya periksa","Arah f_k saya gambar berlawanan gerak","Saya cek sendiri τ = 0 terhadap pusat massa"]},
+{t:"Termodinamika percikan air",q:"Saat air dipercik ke lele atau bara, ke mana kalor mengalir? Prediksikan apa yang dibutuhkan agar air di dalam lele menguap.",
+ hint:["Tuliskan Hukum I Termodinamika untuk lele. Kalor masuk dipakai untuk apa saja?","Berapa ΔT lele dari 27,7 °C ke 96,1 °C? Rumus kalor mana yang cocok untuk tahap ini?","Air yang menguap tidak berubah suhunya. Rumus apa yang dipakai, dan massa air yang mana (bukan 125 g)?","Jumlahkan kedua bagian kalor. Apakah urutan besarnya masuk akal: mana yang lebih dominan, dan mengapa?"],
+ kw:["kalor","laten","sensibel","menguap","hukum","energi"],ck:["Saya tahu m mana yang dipakai untuk Q₁ dan Q₂","Satuan kJ dan kg sudah konsisten","Hasil total saya cek dengan hitung ulang"]},
+{t:"Perpindahan kalor",q:"Dari bara dan asap, mana yang menyumbang kalor lebih banyak ke lele: radiasi atau konveksi? Prediksikan persentasenya dan alasannya.",
+ hint:["Bara berjarak 3 cm. Apakah radiasi atau konveksi yang lebih mungkin mendominasi pada suhu bara yang tidak terlalu tinggi?","Di rumus radiasi, faktor apa yang membuat nilainya kecil: ε, F, atau pangkat suhu? Mengapa pangkat empat penting?","Bagaimana asap yang naik membawa kalor ke seluruh lele? Apa bedanya dengan kalor langsung dari bara?","Jika radiasi sekitar 4,62%, berapa sisanya? Apa artinya bagi cara Simbok Marto menjaga asap tetap mengalir?"],
+ kw:["radiasi","konveksi","asap","emisivitas","stefan","suhu"],ck:["Saya bedakan radiasi (gelombang) dan konveksi (aliran fluida)","Persentase total saya jumlahkan menjadi 100%","Saya tidak menyalin angka AI tanpa menghitung"]},
+{t:"Dehidrasi dan denaturasi",q:"Mengapa lele harus berair 15% dan mencapai suhu dalam 96,1 °C? Prediksikan hubungannya dengan tekstur daging dan daya awet.",
+ hint:["Mulai dari 125 g dengan air 78%: berapa gram air awalnya? Berapa massa padatan yang tetap?","Jika kadar air akhir 15%, berapa massa total akhir? Selisihnya adalah air yang menguap.","Pada rentang 55 °C sampai 96,1 °C protein mengalami apa? Bagaimana ini mengubah tekstur?","Mengapa kadar air rendah membuat lele lebih awet? Kaitkan dengan kebutuhan mikroba."],
+ kw:["protein","denaturasi","koagulasi","air","awet","tekstur"],ck:["Saya hitung sendiri massa air dan padatan","Saya paham denaturasi sebagai perubahan struktur protein","Saya bedakan sebab (kalor) dan akibat (tekstur)"]}
+];
+let st=0, sub={}, doneS={}, qi={}, chatLog={};
+function tpl(i){const s=ST[i];return `Kamu adalah tutor fisika Socratic untuk siswa kelas 11. Topik: ${s.t} pada pengasapan mangut lele (m=125 g, kadar air 78% menjadi 15%, T 27,7 sampai 96,1 °C, c=3,5 kJ/kg°C, Lv=2400 kJ/kg).\nATURAN: jangan beri jawaban akhir; ajukan satu pertanyaan pemandu per balasan; minta siswa menunjukkan langkah; koreksi miskonsepsi dengan pertanyaan balik.\nPREDIKSI SAYA: [tempel prediksi Anda]\nPertanyaan saya: [tulis di sini]`}
+function renderStage(){
+ $("#stages").innerHTML=ST.map((s,i)=>`<button data-st="${i}" class="${i===st?"on":""} ${doneS[i]?"done":""}">Tahap ${i+1}: ${s.t}</button>`).join("");
+ $("#q-text").textContent=ST[st].q;
+ $("#pred").value=sub[st]?.p||"";$("#predeq").value=sub[st]?.e||"";
+ const ok=!!sub[st];$("#predok").textContent=ok?"Terkirim":"";
+ $("#col2").classList.toggle("locked",!ok);$("#col3").classList.toggle("locked",!ok);
+ $("#tpl").textContent=tpl(st);$("#copied").textContent="";
+ $("#chk").innerHTML=ST[st].ck.map(c=>`<label><input type="checkbox">${c}</label>`).join("");
+ $("#refl").value="";
+ $("#chat").innerHTML="";(chatLog[st]||[]).forEach(m=>addMsg(m[0],m[1],true));
+}
+function addMsg(w,t,skip){const d=document.createElement("div");d.className="msg "+w;d.textContent=t;$("#chat").appendChild(d);$("#chat").scrollTop=1e9;if(!skip)(chatLog[st]=chatLog[st]||[]).push([w,t])}
+document.addEventListener("click",e=>{const b=e.target.closest("[data-st]");if(b){st=+b.dataset.st;renderStage()}});
+$("#submitPred").onclick=()=>{
+ const p=$("#pred").value.trim();
+ if(p.length<20){$("#predok").textContent="";$("#predok").style.color="var(--ember)";$("#predok").textContent="Tulis minimal satu kalimat lengkap dengan alasan.";return}
+ $("#predok").style.color="";sub[st]={p,e:$("#predeq").value};qi[st]=0;chatLog[st]=[];
+ renderStage();addMsg("ai","Prediksi Anda sudah saya baca. Saya tidak akan menjawabnya, tetapi akan bertanya. "+ST[st].hint[0]);qi[st]=1;
+};
+$("#send").onclick=sendMsg;$("#chatin").addEventListener("keydown",e=>{if(e.key==="Enter")sendMsg()});
+function sendMsg(){
+ const v=$("#chatin").value.trim();if(!v)return;$("#chatin").value="";addMsg("me",v);
+ const s=ST[st],i=qi[st]||0,low=v.toLowerCase(),hit=s.kw.filter(k=>low.includes(k));
+ let r;
+ if(v.length<15)r="Jawaban Anda masih singkat. Jelaskan alasannya dengan rumus atau urutan sebab-akibat.";
+ else if(/jawab(an)?nya|langsung|berapa hasil/.test(low))r="Saya tidak memberi jawaban akhir, tetapi saya bisa bantu Anda menemukannya. Tulis langkah pertama yang Anda tahu, lalu saya tanya balik.";
+ else{const pre=hit.length?`Bagus, Anda menyebut ${hit.slice(0,2).join(" dan ")}. `:"Coba hubungkan jawaban Anda dengan konsep kunci tahap ini. ";
+  r=i<s.hint.length?pre+s.hint[i]:"Anda sudah melewati semua pertanyaan pemandu. Lanjut ke kolom refleksi dan verifikasi hasil Anda.";qi[st]=i+1}
+ setTimeout(()=>addMsg("ai",r),250);
+}
+$("#copy").onclick=()=>{navigator.clipboard.writeText($("#tpl").textContent).then(()=>$("#copied").textContent="Tersalin",()=>{$("#copied").textContent="Gagal menyalin, salin manual."})};
+$("#markDone").onclick=()=>{
+ const all=$$("#chk input").every(c=>c.checked);
+ if(!all||$("#refl").value.trim().length<10){alert("Centang semua verifikasi dan isi refleksi terlebih dahulu.");return}
+ doneS[st]=true;renderStage();$("#col2").classList.remove("locked");
+};
+
+/* ---- Sintaks 4 ---- */
+let rows=[];
+function renderRows(){
+ $("#dt tbody").innerHTML=rows.map((r,i)=>`<tr>${["t","m","bs","bi"].map(k=>`<td><input type="number" step="0.1" data-i="${i}" data-k="${k}" value="${r[k]}" aria-label="${k}"></td>`).join("")}<td><button class="b alt" data-del="${i}" aria-label="Hapus baris">×</button></td></tr>`).join("");
+}
+document.addEventListener("input",e=>{const t=e.target;if(t.dataset&&t.dataset.k){rows[+t.dataset.i][t.dataset.k]=t.value;draw()}});
+document.addEventListener("click",e=>{const d=e.target.closest("[data-del]");if(d){rows.splice(+d.dataset.del,1);renderRows();draw()}});
+$("#addRow").onclick=()=>{rows.push({t:"",m:"",bs:"",bi:""});renderRows()};
+$("#sample").onclick=()=>{rows=[[0,27.7,27.7,27.7],[10,45,95,32],[20,58,100,38],[30,66,104,44],[45,76,106,52],[60,84,108,58],[75,91,108.5,63],[90,96.1,108.9,68]].map(a=>({t:a[0],m:a[1],bs:a[2],bi:a[3]}));renderRows();draw()};
+const zone={id:"zone",beforeDatasetsDraw(c){const y=c.scales.y,a=c.chartArea;if(!y)return;const t=y.getPixelForValue(96.1),b=y.getPixelForValue(55);c.ctx.save();c.ctx.fillStyle="rgba(217,72,15,.14)";c.ctx.fillRect(a.left,t,a.right-a.left,b-t);c.ctx.restore()}};
+let ch;
+function pts(k){return rows.filter(r=>r.t!==""&&r[k]!=="").map(r=>({x:+r.t,y:+r[k]})).sort((a,b)=>a.x-b.x)}
+function draw(){
+ if(typeof Chart==="undefined")return;
+ const m=pts("m"),bs=pts("bs"),bi=pts("bi"),xs=[...m,...bs,...bi].map(p=>p.x),x0=xs.length?Math.min(...xs):0,x1=xs.length?Math.max(...xs):90;
+ const ds=[
+ {label:"Simbok Marto (dalam)",data:m,borderColor:"#0f8b80",backgroundColor:"#0f8b80",tension:.3},
+ {label:"Pak Budi (permukaan)",data:bs,borderColor:"#c2410c",backgroundColor:"#c2410c",tension:.3},
+ {label:"Pak Budi (dalam)",data:bi,borderColor:"#7c5cbf",backgroundColor:"#7c5cbf",tension:.3,borderDash:[2,3]},
+ {label:"Lingkungan membara 108,94 °C",data:[{x:x0,y:108.94},{x:x1===x0?x0+1:x1,y:108.94}],borderColor:"#888",borderDash:[8,5],pointRadius:0}];
+ const css=getComputedStyle(document.documentElement),ink=css.getPropertyValue("--ink").trim()||"#222",ln=css.getPropertyValue("--line").trim()||"#ddd";
+ if(ch){ch.data.datasets=ds;ch.options.scales.x.ticks.color=ch.options.scales.y.ticks.color=ink;ch.update();}
+ else ch=new Chart($("#chart"),{type:"line",data:{datasets:ds},plugins:[zone],options:{responsive:true,maintainAspectRatio:false,scales:{x:{type:"linear",title:{display:true,text:"t (menit)",color:ink},ticks:{color:ink},grid:{color:ln}},y:{min:20,max:120,title:{display:true,text:"T (°C)",color:ink},ticks:{color:ink},grid:{color:ln}}},plugins:{legend:{labels:{color:ink}}}}});
+ sop(m,bi);
+}
+function sop(m,bi){
+ const mx=m.length?m[m.length-1]:null,bx=bi.length?bi[bi.length-1]:null;
+ const dur=mx?`${mx.x} menit, suhu dalam akhir ${mx.y} °C`:"belum ada data";
+ const cmp=bx?`Pak Budi: suhu dalam ${bx.y} °C pada ${bx.x} menit${bx.y<55?" (belum mencapai zona denaturasi)":""}`:"data Pak Budi belum diisi";
+ $("#sop").textContent=`SOP EVALUASI\n1. Tusuk lele dengan bambu runcing sejajar pusat massa.\n2. Jaga bara membara (±108,94 °C), api kecil, asap mengalir.\n3. Simbok Marto: ${dur}.\n4. ${cmp}.\n5. Target: suhu dalam 96,1 °C, kadar air 15% (m akhir 32,35 g).\n6. Kebutuhan kalor: 252,285 kJ per 125 g.`;
+}
+$("#copySop").onclick=()=>navigator.clipboard.writeText($("#sop").textContent).catch(()=>{});
+/* FBD */
+function fbd(){
+ const c=$("#fbd"),g=c.getContext("2d"),css=getComputedStyle(document.documentElement),ink=css.getPropertyValue("--ink").trim()||"#222";
+ g.clearRect(0,0,c.width,c.height);g.lineWidth=2;g.strokeStyle=ink;g.fillStyle=ink;g.font="14px sans-serif";
+ g.fillStyle="rgba(15,107,100,.2)";g.beginPath();g.ellipse(260,130,120,45,0,0,7);g.fill();g.stroke();
+ g.strokeStyle="#a0782c";g.lineWidth=5;g.beginPath();g.moveTo(80,130);g.lineTo(450,130);g.stroke();
+ const ar=(x1,y1,x2,y2,col,l,lx,ly)=>{g.strokeStyle=col;g.fillStyle=col;g.lineWidth=3;g.beginPath();g.moveTo(x1,y1);g.lineTo(x2,y2);g.stroke();const a=Math.atan2(y2-y1,x2-x1);g.beginPath();g.moveTo(x2,y2);g.lineTo(x2-10*Math.cos(a-.4),y2-10*Math.sin(a-.4));g.lineTo(x2-10*Math.cos(a+.4),y2-10*Math.sin(a+.4));g.fill();g.fillText(l,lx,ly)};
+ ar(30,130,100,130,"#0f8b80","F (dorong)",20,115);
+ ar(260,130,260,225,"#7c5cbf","W = mg",268,222);
+ ar(260,130,260,35,"#2f7d32","N",268,42);
+ ar(400,95,330,95,"#c2410c","f_k (melawan gerak)",300,82);
+ g.fillStyle=ink;g.beginPath();g.arc(260,130,5,0,7);g.fill();g.fillText("pusat massa",190,155);
+ const F=+$("#Fin").value,D=+$("#Din").value,m=+$("#Min").value;
+ if(F>0&&D>0){const A=Math.PI*(D/2)**2;const P=F/(A*1e-6);$("#pcalc").textContent=`A = ${A.toFixed(3)} mm² · P = F/A = ${(P/1e6).toFixed(1)} MPa · W = ${(m/1000*9.8).toFixed(2)} N. Syarat τ = 0: garis kerja F melalui pusat massa.`}
+}
+["Fin","Din","Min"].forEach(i=>$("#"+i).addEventListener("input",fbd));
+
+/* ---- Sintaks 5 ---- */
+const QZ=[
+{q:"Bagian terbesar kalor yang diterima lele berasal dari…",o:["Radiasi bara (4,62%)","Konveksi asap (95,38%)","Konduksi bambu","Gesekan tusukan"],a:1},
+{q:"Kalor Q₂ = 222,36 kJ dipakai untuk…",o:["Menaikkan suhu daging","Menguapkan 92,65 g air","Memutar lele","Menggelapkan kulit"],a:1},
+{q:"Mengapa api besar Pak Budi kurang baik?",o:["Suhu permukaan naik cepat, bagian dalam belum matang merata","Bambu lebih tajam","Lele kehilangan massa padat","Asap tidak terbentuk"],a:0},
+{q:"Rentang denaturasi protein pada data ini adalah…",o:["20–40 °C","55–96,1 °C","100–108,94 °C","0–27,7 °C"],a:1}];
+$("#quiz").innerHTML=QZ.map((x,i)=>`<fieldset style="border:0;padding:0;margin:0 0 .8rem"><legend><b>${i+1}. ${x.q}</b></legend>${x.o.map((o,j)=>`<label style="font-weight:400;display:flex;gap:.5rem;margin:.2rem 0"><input type="radio" name="q${i}" value="${j}" style="width:auto">${o}</label>`).join("")}<div class="note" id="fb${i}"></div></fieldset>`).join("");
+$("#grade").onclick=()=>{let s=0;QZ.forEach((x,i)=>{const v=document.querySelector(`input[name=q${i}]:checked`),ok=v&&+v.value===x.a;if(ok)s++;$("#fb"+i).textContent=ok?"Tepat.":"Belum tepat. Kembali ke tahap penyelidikan terkait dan hitung ulang."});$("#score").textContent=`Skor ${s}/${QZ.length}`};
+$("#subIg").onclick=()=>{
+ const v=$("#ig").value.trim();
+ if(!/^https:\/\/(www\.)?instagram\.com\/\S+/i.test(v)){$("#igok").style.color="var(--ember)";$("#igok").textContent="Masukkan tautan yang diawali https://www.instagram.com/";return}
+ const li=document.createElement("li");li.textContent=v+($("#cap").value?" — "+$("#cap").value:"");$("#subs").appendChild(li);
+ $("#igok").style.color="var(--ok)";$("#igok").textContent="Terkirim untuk tinjauan teman";$("#ig").value="";$("#cap").value="";
+};
+
+renderStage();fbd();$("#sample").click();go(1);
+</script>
+</body>
+</html>
